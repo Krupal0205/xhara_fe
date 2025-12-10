@@ -1,84 +1,125 @@
-import React from 'react';
-import { FaFacebook, FaPinterest, FaInstagram, FaYoutube } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaFacebook, FaPinterest, FaInstagram, FaYoutube, FaChevronDown, FaArrowRight, FaCheck } from 'react-icons/fa';
 
 export default function Footer() {
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [email, setEmail] = useState('');
+  const [isQuickLinksOpen, setIsQuickLinksOpen] = useState(true);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubscribed(true);
+      setEmail('');
+      setTimeout(() => setIsSubscribed(false), 5000);
+    }
+  };
+
+  const toggleQuickLinks = () => {
+    setIsQuickLinksOpen(!isQuickLinksOpen);
+  };
+
   return (
-    <footer className="bg-black text-gray-300 py-8 sm:py-12 md:py-16">
+    <footer className="bg-black text-white py-8 sm:py-12 md:py-16">
       <div className="container mx-auto px-3 sm:px-4 md:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 mb-6 sm:mb-8">
-          {/* Company Info */}
-          <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Xhara
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-400 mb-4">
-              Premium 925 Sterling Silver Jewelry
-            </p>
-            <div className="flex gap-3 sm:gap-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaFacebook className="w-4 h-4 sm:w-5 sm:h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaPinterest className="w-4 h-4 sm:w-5 sm:h-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <FaYoutube className="w-4 h-4 sm:w-5 sm:h-5" />
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-sm sm:text-base font-semibold text-white mb-3 sm:mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">Contact</a></li>
-              <li><a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">Shipping</a></li>
-              <li><a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">Returns</a></li>
-            </ul>
-          </div>
-
-          {/* Customer Service */}
-          <div>
-            <h4 className="text-sm sm:text-base font-semibold text-white mb-3 sm:mb-4">Customer Service</h4>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">FAQ</a></li>
-              <li><a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">Size Guide</a></li>
-              <li><a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">Care Guide</a></li>
-              <li><a href="#" className="text-xs sm:text-sm text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-            </ul>
-          </div>
-
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-sm sm:text-base font-semibold text-white mb-3 sm:mb-4">Newsletter</h4>
-            <p className="text-xs sm:text-sm text-gray-400 mb-3 sm:mb-4">
-              Subscribe to get updates on new collections and exclusive offers.
-            </p>
-            <form className="flex flex-col gap-2">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="px-3 sm:px-4 py-2 bg-gray-900 border border-gray-700 rounded text-xs sm:text-sm text-white placeholder-gray-500 focus:outline-none focus:border-gray-600"
-              />
-              <button
-                type="submit"
-                className="px-4 py-2 bg-white text-black rounded text-xs sm:text-sm font-medium hover:bg-gray-200 transition-colors"
+        {/* Main Footer Content */}
+        <div className="mb-8 sm:mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+            {/* Left Side - Quick Links */}
+            <div>
+              <button 
+                onClick={toggleQuickLinks}
+                className="flex items-center gap-2 mb-4 sm:mb-6 cursor-pointer hover:opacity-80 transition-opacity"
               >
-                Subscribe
+                <h4 className="text-base sm:text-lg font-semibold text-white">Quick links</h4>
+                <FaChevronDown className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
               </button>
-            </form>
+              {isQuickLinksOpen && (
+                <div className="space-y-2 sm:space-y-3">
+                  <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2">
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">FAQ's</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Contact us</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Jewellery Care tips</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Shipping</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Terms of Service</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Exchange and return policy</a>
+                  </div>
+                  <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2">
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Corporate and custom order</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Privacy Policy</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Our Story</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Size Guide</a>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Right Side - Newsletter and Social Media */}
+            <div>
+              <div className="mb-4 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">
+                  Never miss out the new drops, subscribe now!
+                </h4>
+                <form onSubmit={handleSubmit} className="mb-3">
+                  <div className="flex border border-white rounded overflow-hidden">
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="flex-1 px-3 sm:px-4 py-2 sm:py-3 bg-transparent text-xs sm:text-sm text-white placeholder-white focus:outline-none"
+                    />
+                    <button
+                      type="submit"
+                      className="px-3 sm:px-4 py-2 sm:py-3 border-l border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"
+                    >
+                      <FaArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-white hover:text-black" />
+                    </button>
+                  </div>
+                </form>
+                {isSubscribed && (
+                  <div className="flex items-center gap-2 text-white text-xs sm:text-sm mb-4">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-green-500 flex items-center justify-center">
+                      <FaCheck className="w-2 h-2 sm:w-3 sm:h-3 text-white" />
+                    </div>
+                    <span>Thanks for subscribing</span>
+                  </div>
+                )}
+              </div>
+              <div className="flex gap-3 sm:gap-4">
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black border border-white flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                  <FaFacebook className="w-4 h-4 sm:w-5 sm:h-5" />
+                </a>
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black border border-white flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                  <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />
+                </a>
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black border border-white flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                  <FaYoutube className="w-4 h-4 sm:w-5 sm:h-5" />
+                </a>
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black border border-white flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                  <FaPinterest className="w-4 h-4 sm:w-5 sm:h-5" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="border-t border-gray-800 pt-6 sm:pt-8 text-center">
-          <p className="text-xs sm:text-sm text-gray-500">
-            © {new Date().getFullYear()} Xhara. All rights reserved.
-          </p>
+        {/* Divider */}
+        <div className="border-t border-gray-600 mb-6 sm:mb-8"></div>
+
+        {/* Copyright and Policy Links */}
+        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 gap-y-1 text-xs sm:text-sm text-white">
+          <span>© 2025, Silverlab</span>
+          <span className="hidden sm:inline text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Refund policy</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Privacy policy</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Terms of service</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Contact information</a>
+          <span className="text-gray-500">•</span>
+          <a href="#" className="hover:text-gray-300 transition-colors">Shipping policy</a>
         </div>
       </div>
     </footer>

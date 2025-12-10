@@ -38,7 +38,7 @@ const Hero = () => {
         </video>
         
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 "></div>
       </section>
 
       {/* Pick Your Sparkle Style Section */}
@@ -105,7 +105,7 @@ const Hero = () => {
                 }}
               >
                 {/* Dark Overlay for better text visibility */}
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-500"></div>
+                <div className="absolute inset-0   transition-colors duration-500"></div>
               </div>
               {/* Text Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
@@ -122,7 +122,7 @@ const Hero = () => {
                 }}
               >
                 {/* Dark Overlay for better text visibility */}
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-500"></div>
+                <div className="absolute inset-0  transition-colors duration-500"></div>
               </div>
               {/* Text Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
@@ -139,7 +139,7 @@ const Hero = () => {
                 }}
               >
                 {/* Dark Overlay for better text visibility */}
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-500"></div>
+                <div className="absolute inset-0  transition-colors duration-500"></div>
               </div>
               {/* Text Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
@@ -156,7 +156,7 @@ const Hero = () => {
                 }}
               >
                 {/* Dark Overlay for better text visibility */}
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-500"></div>
+                <div className="absolute inset-0  transition-colors duration-500"></div>
               </div>
               {/* Text Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
