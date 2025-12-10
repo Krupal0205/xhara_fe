@@ -35,19 +35,21 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="bg-black py-12 md:py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Silver That Stays, Love That Lasts</h2>
+    <section className="bg-black py-8 sm:py-12 md:py-20">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 px-2">Silver That Stays, Love That Lasts</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
           {features.map((feature, index) => (
-            <div key={index} className="text-center">
-              <div className="flex justify-center mb-6">
-                {feature.icon}
+            <div key={index} className="text-center px-2">
+              <div className="flex justify-center mb-4 sm:mb-6">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28">
+                  {feature.icon}
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-              <p className="text-gray-300">{feature.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3">{feature.title}</h3>
+              <p className="text-gray-300 text-sm sm:text-base">{feature.description}</p>
             </div>
           ))}
         </div>

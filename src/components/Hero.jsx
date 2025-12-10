@@ -25,7 +25,7 @@ const Hero = () => {
   return (
     <>
       {/* Video Hero Section */}
-      <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-screen min-h-[400px] sm:min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Background Video */}
         <video
           autoPlay
@@ -42,16 +42,16 @@ const Hero = () => {
       </section>
 
       {/* Pick Your Sparkle Style Section */}
-      <section className="bg-black py-16">
-  <div className="max-w-7xl mx-auto px-4">
+      <section className="bg-black py-8 sm:py-12 md:py-16">
+  <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6">
     
     {/* Title */}
-    <h2 className="text-3xl font-semibold text-white mb-12">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white mb-6 sm:mb-8 md:mb-12 text-center sm:text-left">
       Pick Your Sparkle Style
     </h2>
 
     {/* Cards */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
 
       {categories.map((category, index) => (
         <div
@@ -63,22 +63,27 @@ const Hero = () => {
             flex flex-col
             items-center
             justify-between
-            py-14
+            py-6 sm:py-8 md:py-14
+            px-2 sm:px-4
             cursor-pointer
             shadow-sm
+            hover:scale-105
+            transform
           "
         >
           {/* Icon */}
-          <div className="flex items-center justify-center mb-10">
-            {category.icon}
+          <div className="flex items-center justify-center mb-4 sm:mb-6 md:mb-10">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20">
+              {category.icon}
+            </div>
           </div>
 
           {/* Text + Arrow */}
-          <div className="flex items-center gap-2">
-            <span className="text-white text-base tracking-wide">
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="text-white text-xs sm:text-sm md:text-base tracking-wide text-center">
               {category.name}
             </span>
-            <FiArrowRight className="text-white w-5 h-5" />
+            <FiArrowRight className="text-white w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 flex-shrink-0" />
           </div>
         </div>
       ))}
@@ -90,9 +95,9 @@ const Hero = () => {
       {/* HER, HIM, SPRING SPARKLE, GIFTING Section */}
       <section className="bg-black">
         <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-hide" style={{ scrollBehavior: 'smooth' }}>
-          <div className="flex gap-6 min-w-max px-4 md:px-6">
+          <div className="flex gap-3 sm:gap-4 md:gap-6 min-w-max px-3 sm:px-4 md:px-6">
             {/* HER Section */}
-            <div className="relative h-[300px] md:h-[400px] w-[300px] md:w-[400px] flex-shrink-0 overflow-hidden group cursor-pointer transition-all duration-500">
+            <div className="relative h-[250px] sm:h-[300px] md:h-[400px] w-[250px] sm:w-[300px] md:w-[400px] flex-shrink-0 overflow-hidden group cursor-pointer transition-all duration-500">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-110"
                 style={{
@@ -104,12 +109,12 @@ const Hero = () => {
               </div>
               {/* Text Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                <h3 className="text-2xl md:text-2xl lg:text-2xl font-bold text-white group-hover:scale-110 transition-transform duration-500">HER</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white group-hover:scale-110 transition-transform duration-500">HER</h3>
               </div>
             </div>
 
             {/* HIM Section */}
-            <div className="relative h-[300px] md:h-[400px] w-[300px] md:w-[400px] flex-shrink-0 overflow-hidden group cursor-pointer transition-all duration-500">
+            <div className="relative h-[250px] sm:h-[300px] md:h-[400px] w-[250px] sm:w-[300px] md:w-[400px] flex-shrink-0 overflow-hidden group cursor-pointer transition-all duration-500">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-110"
                 style={{
@@ -121,12 +126,12 @@ const Hero = () => {
               </div>
               {/* Text Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                <h3 className="text-2xl md:text-2xl lg:text-2xl font-bold text-white group-hover:scale-110 transition-transform duration-500">HIM</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white group-hover:scale-110 transition-transform duration-500">HIM</h3>
               </div>
             </div>
 
             {/* SPRING SPARKLE Section */}
-            <div className="relative h-[300px] md:h-[400px] w-[300px] md:w-[400px] flex-shrink-0 overflow-hidden group cursor-pointer transition-all duration-500">
+            <div className="relative h-[250px] sm:h-[300px] md:h-[400px] w-[250px] sm:w-[300px] md:w-[400px] flex-shrink-0 overflow-hidden group cursor-pointer transition-all duration-500">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-110"
                 style={{
@@ -138,12 +143,12 @@ const Hero = () => {
               </div>
               {/* Text Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                <h3 className="text-2xl md:text-2xl lg:text-2xl font-bold text-white text-center px-4 group-hover:scale-110 transition-transform duration-500">SPRING SPARKLE</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white text-center px-2 sm:px-4 group-hover:scale-110 transition-transform duration-500">SPRING SPARKLE</h3>
               </div>
             </div>
 
             {/* GIFTING Section */}
-            <div className="relative h-[300px] md:h-[400px] w-[300px] md:w-[400px] flex-shrink-0 overflow-hidden group cursor-pointer transition-all duration-500">
+            <div className="relative h-[250px] sm:h-[300px] md:h-[400px] w-[250px] sm:w-[300px] md:w-[400px] flex-shrink-0 overflow-hidden group cursor-pointer transition-all duration-500">
               <div 
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-110"
                 style={{
@@ -155,18 +160,18 @@ const Hero = () => {
               </div>
               {/* Text Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-                <h3 className="text-2xl md:text-2xl lg:text-2xl font-bold text-white group-hover:scale-110 transition-transform duration-500">GIFTING</h3>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white group-hover:scale-110 transition-transform duration-500">GIFTING</h3>
               </div>
             </div>
           </div>
         </div>
         {/* SILVERLAB Logo Row - Scrolling animation */}
-        <div className="bg-black py-6 w-full overflow-hidden">
+        <div className="bg-black py-4 sm:py-6 w-full overflow-hidden">
           <div className="flex animate-scroll">
             {Array.from({ length: 15 }).map((_, i) => (
               <h4 
                 key={i}
-                className="text-2xl md:text-3xl lg:text-4xl text-white tracking-wider whitespace-nowrap mx-4 md:mx-8"
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white tracking-wider whitespace-nowrap mx-3 sm:mx-4 md:mx-8"
                 style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400 }}
               >
                 Xhara

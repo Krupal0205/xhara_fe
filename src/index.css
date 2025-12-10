@@ -5,6 +5,16 @@
 @layer base {
   body {
     @apply font-sans antialiased;
+    overflow-x: hidden;
+  }
+  
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  img, video {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -35,5 +45,19 @@
 .animate-scroll {
   animation: scroll 20s linear infinite;
   display: flex;
+}
+
+/* Responsive improvements */
+@media (max-width: 640px) {
+  .animate-scroll {
+    animation-duration: 15s;
+  }
+}
+
+/* Smooth scrolling for mobile */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 

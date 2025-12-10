@@ -92,9 +92,9 @@ const ProductShowcase = () => {
   };
 
   const CategoryCard = ({ product }) => (
-    <div className="bg-black rounded-lg overflow-hidden group cursor-pointer relative flex-shrink-0 min-w-[280px] md:min-w-[320px] hover:scale-105 transition-transform duration-300">
+    <div className="bg-black rounded-lg overflow-hidden group cursor-pointer relative flex-shrink-0 min-w-[200px] sm:min-w-[240px] md:min-w-[280px] lg:min-w-[320px] hover:scale-105 transition-transform duration-300">
       {/* Product Image Area */}
-      <div className="relative h-[300px] md:h-[350px] flex items-center justify-center overflow-hidden">
+      <div className="relative h-[250px] sm:h-[280px] md:h-[300px] lg:h-[350px] flex items-center justify-center overflow-hidden">
         {/* Product Image */}
         {product.image && product.image.startsWith('http') ? (
           <div 
@@ -107,23 +107,23 @@ const ProductShowcase = () => {
           </div>
         ) : (
           <div className="w-full h-full bg-gray-900 flex items-center justify-center relative">
-            <span className="text-gray-500 text-4xl">{product.image}</span>
+            <span className="text-gray-500 text-2xl sm:text-3xl md:text-4xl">{product.image}</span>
           </div>
         )}
       </div>
       
       {/* Product Info */}
-      <div className="p-4 bg-black">
-        <h3 className="font-semibold text-white mb-2 text-sm md:text-base">{product.name}</h3>
-        <p className="text-base md:text-lg font-bold text-white">Rs. {product.price.toLocaleString()}</p>
+      <div className="p-3 sm:p-4 bg-black">
+        <h3 className="font-semibold text-white mb-2 text-xs sm:text-sm md:text-base line-clamp-2">{product.name}</h3>
+        <p className="text-sm sm:text-base md:text-lg font-bold text-white">Rs. {product.price.toLocaleString()}</p>
       </div>
     </div>
   );
 
   const ProductCard = ({ product, showSale = false }) => (
-    <div className="bg-black rounded-lg overflow-hidden group cursor-pointer relative min-w-[350px] md:min-w-[400px] flex-shrink-0">
+    <div className="bg-black rounded-lg overflow-hidden group cursor-pointer relative min-w-[280px] sm:min-w-[320px] md:min-w-[350px] lg:min-w-[400px] flex-shrink-0">
       {/* Product Image Area */}
-      <div className="relative h-[400px] md:h-[500px] flex items-center justify-center">
+      <div className="relative h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] flex items-center justify-center">
         {/* Main Product Image */}
         <div 
           className="w-full h-full bg-cover bg-center bg-no-repeat relative"
@@ -133,7 +133,7 @@ const ProductShowcase = () => {
           }}
         >
           {!product.image && (
-            <span className="text-gray-500 text-sm absolute inset-0 flex items-center justify-center">Product Image</span>
+            <span className="text-gray-500 text-xs sm:text-sm absolute inset-0 flex items-center justify-center">Product Image</span>
           )}
           {/* Optional overlay if needed */}
           <div className="absolute inset-0 bg-black/10"></div>
@@ -141,9 +141,9 @@ const ProductShowcase = () => {
         
         {/* Vertical Tagline Text */}
         {product.tagline && (
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
+          <div className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10">
             <p 
-              className="text-white text-xs md:text-sm font-medium"
+              className="text-white text-[10px] sm:text-xs md:text-sm font-medium"
               style={{ 
                 writingMode: 'vertical-rl',
                 textOrientation: 'mixed',
@@ -157,22 +157,22 @@ const ProductShowcase = () => {
         
         {/* Sale Tag */}
         {showSale && product.onSale && (
-          <span className="absolute bottom-4 left-4 bg-black/80 text-gray-200 text-xs font-medium px-4 py-1.5 rounded-full border border-gray-300/50 shadow-[0_0_8px_rgba(255,255,255,0.3)] z-10">
+          <span className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-black/80 text-gray-200 text-[10px] sm:text-xs font-medium px-2 sm:px-4 py-1 sm:py-1.5 rounded-full border border-gray-300/50 shadow-[0_0_8px_rgba(255,255,255,0.3)] z-10">
             Sale
           </span>
         )}
       </div>
       
       {/* Product Info */}
-      <div className="p-4 bg-black">
-        <h3 className="font-semibold text-white mb-3 text-sm md:text-base">{product.name}</h3>
+      <div className="p-3 sm:p-4 bg-black">
+        <h3 className="font-semibold text-white mb-2 sm:mb-3 text-xs sm:text-sm md:text-base line-clamp-2">{product.name}</h3>
         {showSale && product.onSale ? (
-          <div className="flex items-center gap-3">
-            <span className="text-lg font-bold text-white">Rs. {product.salePrice.toLocaleString()}</span>
-            <span className="text-sm text-gray-400 line-through">Rs. {product.originalPrice.toLocaleString()}</span>
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+            <span className="text-base sm:text-lg font-bold text-white">Rs. {product.salePrice.toLocaleString()}</span>
+            <span className="text-xs sm:text-sm text-gray-400 line-through">Rs. {product.originalPrice.toLocaleString()}</span>
           </div>
         ) : (
-          <p className="text-lg font-bold text-white">Rs. {product.price?.toLocaleString()}</p>
+          <p className="text-base sm:text-lg font-bold text-white">Rs. {product.price?.toLocaleString()}</p>
         )}
       </div>
     </div>
@@ -191,30 +191,30 @@ const ProductShowcase = () => {
       
 
       {/* Featured Section */}
-      <section className="container mx-auto px-4 pt-12 md:pt-20 ">
-        <div className=" mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Glow with Grace</h2>
-          <p className="text-gray-300 ">
+      <section className="container mx-auto px-3 sm:px-4 md:px-6 pt-8 sm:pt-12 md:pt-20">
+        <div className="mb-6 sm:mb-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 text-center sm:text-left">Glow with Grace</h2>
+          <p className="text-gray-300 text-sm sm:text-base text-center sm:text-left">
             Premium 925 silver designs made to dazzle this festive season — elegant, timeless, and gift-ready.
           </p>
         </div>
         
         {/* Scrollable Product Cards */}
         <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-hide" style={{ scrollBehavior: 'smooth' }}>
-          <div className="flex gap-6 min-w-max pb-4">
+          <div className="flex gap-3 sm:gap-4 md:gap-6 min-w-max pb-4 px-1">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} product={product} showSale={true} />
             ))}
             {/* View All Card */}
-            <div className="bg-[#1a1a1a] rounded-lg min-w-[350px] md:min-w-[400px] flex-shrink-0 h-[450px] md:h-[500px] flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors">
-              <p className="text-white text-xl font-medium">View all</p>
+            <div className="bg-[#1a1a1a] rounded-lg min-w-[280px] sm:min-w-[320px] md:min-w-[350px] lg:min-w-[400px] flex-shrink-0 h-[400px] sm:h-[450px] md:h-[500px] flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors">
+              <p className="text-white text-lg sm:text-xl font-medium">View all</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Video Section - Top */}
-      <section className="relative w-full h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-screen min-h-[400px] sm:min-h-[500px] md:min-h-[600px] flex items-center justify-center overflow-hidden">
         <video
           autoPlay
           loop
@@ -230,14 +230,14 @@ const ProductShowcase = () => {
 
       {/* Category Navigation Section */}
       <section className="bg-black">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6">
           {/* Category Tabs */}
-          <div className="flex flex-wrap gap-3 mb-8 justify-center">
+          <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8 justify-center">
             {categories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-colors ${
                   activeCategory === category.id
                     ? 'bg-black text-white border border-gray-700'
                     : 'bg-[#36454f] text-white hover:bg-gray-700'
@@ -250,14 +250,14 @@ const ProductShowcase = () => {
 
           {/* Products Grid */}
           <div className="w-full overflow-x-auto overflow-y-hidden scrollbar-hide" style={{ scrollBehavior: 'smooth' }}>
-            <div className="flex gap-6 min-w-max pb-4 px-2">
+            <div className="flex gap-3 sm:gap-4 md:gap-6 min-w-max pb-4 px-1">
               {categoryProducts[activeCategory]?.map((product, index) => (
                 <CategoryCard key={index} product={product} />
               ))}
               {/* View All Card */}
-              <div className="bg-[#1B1B1B] rounded-lg min-w-[280px] md:min-w-[320px] flex-shrink-0 h-[420px] md:h-[350px] flex flex-col items-center justify-center cursor-pointer  hover:scale-105 transition-all duration-300">
-                <FiArrowRight className="text-white w-12 h-12 mb-3" />
-                <p className="text-white text-lg font-medium">View all</p>
+              <div className="bg-[#1B1B1B] rounded-lg min-w-[200px] sm:min-w-[240px] md:min-w-[280px] lg:min-w-[320px] flex-shrink-0 h-[350px] sm:h-[380px] md:h-[420px] lg:h-[350px] flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300">
+                <FiArrowRight className="text-white w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-2 sm:mb-3" />
+                <p className="text-white text-sm sm:text-base md:text-lg font-medium">View all</p>
               </div>
             </div>
           </div>
@@ -265,13 +265,13 @@ const ProductShowcase = () => {
       </section>
 
       {/* Image Section */}
-      <section className="bg-black pt-12 md:pt-20">
-        <div className="container mx-auto px-4">
+      <section className="bg-black pt-8 sm:pt-12 md:pt-20">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6">
           <div className="w-full">
             <img 
               src="https://accessorizelondon.in/cdn/shop/products/MA-69461591003_1_652a5ee7-ba78-456e-9aba-00e0786eb5ea.jpg?v=1697114883" 
               alt="Product showcase" 
-              className="w-full h-auto max-h-[500px] md:max-h-[600px] object-cover rounded-lg"
+              className="w-full h-auto max-h-[300px] sm:max-h-[400px] md:max-h-[500px] lg:max-h-[600px] object-cover rounded-lg"
             />
           </div>
         </div>
