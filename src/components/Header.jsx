@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FiSearch, FiShoppingCart, FiUser, FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import { FaFacebook, FaPinterest, FaInstagram, FaYoutube } from 'react-icons/fa';
 import logo from '../image/logo.png';
 
-const Header = () => {
+const Header = ({ onContactClick }) => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWomenHovered, setIsWomenHovered] = useState(false);
@@ -85,11 +87,19 @@ const Header = () => {
 
             {/* Logo - Left on Mobile, Centered on Desktop */}
             <div className="flex items-center lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-              <img 
-                src={logo} 
-                alt="Xhara Logo" 
-                className="h-3 sm:h-4 md:h-5 lg:h-6 w-auto object-contain"
-              />
+              <button
+                onClick={() => {
+                  navigate('/');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="cursor-pointer hover:opacity-80 transition-opacity"
+              >
+                <img 
+                  src={logo} 
+                  alt="Xhara Logo" 
+                  className="h-3 sm:h-4 md:h-5 lg:h-6 w-auto object-contain"
+                />
+              </button>
             </div>
 
             {/* Desktop Navigation */}
@@ -112,11 +122,15 @@ const Header = () => {
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                     onClick={(e) => {
                       e.preventDefault();
-                      if (item.name === 'Women') {
+                      if (item.name === 'Contact' && onContactClick) {
+                        onContactClick();
+                      } else if (item.name === 'Gifting') {
+                        navigate('/gifting');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      } else if (item.name === 'Women') {
                         setIsWomenClicked(!isWomenClicked);
                         setIsWomenHovered(!isWomenClicked);
-                      }
-                      if (item.name === 'Men') {
+                      } else if (item.name === 'Men') {
                         setIsMenClicked(!isMenClicked);
                         setIsMenHovered(!isMenClicked);
                       }
@@ -242,7 +256,22 @@ const Header = () => {
           <nav className="container mx-auto px-3 sm:px-4 py-4">
             {menuItems.map((item, index) => (
               <div key={index} className="py-2">
-                <a href="#" className="text-gray-200 font-medium py-2 flex items-center gap-2 text-sm sm:text-base">
+                <a 
+                  href="#" 
+                  className="text-gray-200 font-medium py-2 flex items-center gap-2 text-sm sm:text-base"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (item.name === 'Contact' && onContactClick) {
+                      onContactClick();
+                      setIsMenuOpen(false);
+                    } else if (item.name === 'Gifting') {
+                      navigate('/gifting');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      setIsMenuOpen(false);
+                    }
+                  }}
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                >
                   {item.name}
                   {item.submenu && <FiChevronDown className="w-4 h-4" />}
                 </a>
@@ -250,7 +279,7 @@ const Header = () => {
                   <ul className="pl-4 mt-2 space-y-1">
                     {item.submenu.map((subItem, subIndex) => (
                       <li key={subIndex}>
-                        <a href="#" className="text-xs sm:text-sm text-gray-400 block py-1 hover:text-gray-200">
+                        <a href="#" className="text-xs sm:text-sm text-gray-400 block py-1 hover:text-gray-200" style={{ fontFamily: "'Poppins', sans-serif" }}>
                           {subItem}
                         </a>
                       </li>
@@ -267,18 +296,19 @@ const Header = () => {
       {isCartOpen && (
         <div className="absolute top-full right-2 sm:right-4 mt-2 w-[calc(100vw-1rem)] sm:w-80 max-w-sm bg-black border border-gray-700 shadow-xl rounded-lg p-4 z-50">
           <div className="text-center py-6 sm:py-8">
-            <p className="text-gray-200 mb-4 text-sm sm:text-base">Item added to your cart</p>
+            <p className="text-gray-200 mb-4 text-sm sm:text-base" style={{ fontFamily: "'Poppins', sans-serif" }}>Item added to your cart</p>
             <div className="flex flex-col sm:flex-row gap-2 justify-center">
-              <button className="px-4 py-2 bg-white text-black rounded hover:bg-gray-200 transition-colors text-sm sm:text-base">
+              <button className="px-4 py-2 bg-white text-black rounded hover:bg-gray-200 transition-colors text-sm sm:text-base" style={{ fontFamily: "'Poppins', sans-serif" }}>
                 View cart
               </button>
-              <button className="px-4 py-2 border border-gray-600 text-gray-200 rounded hover:bg-gray-900 transition-colors text-sm sm:text-base">
+              <button className="px-4 py-2 border border-gray-600 text-gray-200 rounded hover:bg-gray-900 transition-colors text-sm sm:text-base" style={{ fontFamily: "'Poppins', sans-serif" }}>
                 Check out
               </button>
             </div>
             <button 
               className="mt-4 text-xs sm:text-sm text-gray-400 hover:text-gray-200 transition-colors"
               onClick={() => setIsCartOpen(false)}
+              style={{ fontFamily: "'Poppins', sans-serif" }}
             >
               Continue shopping
             </button>

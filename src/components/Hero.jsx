@@ -79,7 +79,7 @@ const Hero = () => {
           </div>
 
           {/* Text + Arrow */}
-          <div className="flex items-center gap-1 sm:gap-2">
+          <div className="flex items-center gap-1 sm:gap-2 mt-6">
             <span className="text-white text-xs sm:text-sm md:text-base tracking-wide text-center">
               {category.name}
             </span>
@@ -108,7 +108,7 @@ const Hero = () => {
                 <div className="absolute inset-0   transition-colors duration-500"></div>
               </div>
               {/* Text Overlay */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+              <div className="absolute inset-0 flex flex-col items-center justify-center z-10 ">
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white group-hover:scale-110 transition-transform duration-500">HER</h3>
               </div>
             </div>

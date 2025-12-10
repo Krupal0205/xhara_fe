@@ -38,17 +38,17 @@ export default function Footer() {
                 <div className="space-y-2 sm:space-y-3">
                   <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2">
                     <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>FAQ's</a>
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Contact us</a>
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Jewellery Care tips</a>
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Shipping</a>
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Terms of Service</a>
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Exchange and return policy</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Contact us</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Jewellery Care tips</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Shipping</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Terms of Service</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Exchange and return policy</a>
                   </div>
                   <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2">
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Corporate and custom order</a>
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Privacy Policy</a>
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Our Story</a>
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Size Guide</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Corporate and custom order</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Privacy Policy</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Our Story</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Size Guide</a>
                   </div>
                 </div>
               )}
@@ -61,7 +61,7 @@ export default function Footer() {
                   Never miss out the new drops, subscribe now!
                 </h4>
                 <form onSubmit={handleSubmit} className="mb-3">
-                  <div className="flex border-[0.5px] border-white rounded overflow-hidden">
+                  <div className="flex border-[0.5px] border-white/50 rounded overflow-hidden">
                     <input
                       type="email"
                       placeholder="Email"
@@ -114,13 +114,13 @@ export default function Footer() {
           <span className="hidden sm:inline text-gray-500">•</span>
           <a href="#" className="hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Refund policy</a>
           <span className="text-gray-500">•</span>
-          <a href="#" className="hover:text-gray-300 transition-colors">Privacy policy</a>
+          <a href="#" className="hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Privacy policy</a>
           <span className="text-gray-500">•</span>
-          <a href="#" className="hover:text-gray-300 transition-colors">Terms of service</a>
+          <a href="#" className="hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Terms of service</a>
           <span className="text-gray-500">•</span>
-          <a href="#" className="hover:text-gray-300 transition-colors">Contact information</a>
+          <a href="#" className="hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Contact information</a>
           <span className="text-gray-500">•</span>
-          <a href="#" className="hover:text-gray-300 transition-colors">Shipping policy</a>
+          <a href="#" className="hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Shipping policy</a>
         </div>
       </div>
     </footer>
