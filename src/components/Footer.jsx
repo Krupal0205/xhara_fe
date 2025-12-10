@@ -61,7 +61,7 @@ export default function Footer() {
                   Never miss out the new drops, subscribe now!
                 </h4>
                 <form onSubmit={handleSubmit} className="mb-3">
-                  <div className="flex border border-white rounded overflow-hidden">
+                  <div className="flex border-[0.5px] border-white rounded overflow-hidden">
                     <input
                       type="email"
                       placeholder="Email"
@@ -88,16 +88,16 @@ export default function Footer() {
                 )}
               </div>
               <div className="flex gap-3 sm:gap-4">
-                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black border border-white flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black  flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
                   <FaFacebook className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
-                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black border border-white flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black  flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
                   <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
-                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black border border-white flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black  flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
                   <FaYoutube className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
-                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black border border-white flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                <a href="#" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black  flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
                   <FaPinterest className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
               </div>

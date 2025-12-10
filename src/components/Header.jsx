@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiShoppingCart, FiUser, FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import { FaFacebook, FaPinterest, FaInstagram, FaYoutube } from 'react-icons/fa';
+import logo from '../image/logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,64 +69,81 @@ const Header = () => {
       {/* Main Header */}
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between relative">
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
-            {menuItems.map((item, index) => (
-              <div 
-                key={index} 
-                className="relative group"
-                onMouseEnter={() => {
-                  if (item.name === 'Women') setIsWomenHovered(true);
-                  if (item.name === 'Men') setIsMenHovered(true);
-                }}
-                onMouseLeave={() => {
-                  if (item.name === 'Women' && !isWomenClicked) setIsWomenHovered(false);
-                  if (item.name === 'Men' && !isMenClicked) setIsMenHovered(false);
-                }}
-              >
-                <button 
-                  className="text-gray-200 hover:text-white font-medium py-2 flex items-center gap-1 text-xs xl:text-sm"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (item.name === 'Women') {
-                      setIsWomenClicked(!isWomenClicked);
-                      setIsWomenHovered(!isWomenClicked);
-                    }
-                    if (item.name === 'Men') {
-                      setIsMenClicked(!isMenClicked);
-                      setIsMenHovered(!isMenClicked);
-                    }
+          {/* Left Side - Mobile: Hamburger + Logo, Desktop: Navigation */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            {/* Mobile Hamburger Menu */}
+            <button 
+              className="lg:hidden p-1.5 sm:p-2 hover:bg-gray-900 rounded-full transition-colors"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? (
+                <FiX className="w-4 h-4 sm:w-5 sm:h-5 text-gray-200" />
+              ) : (
+                <FiMenu className="w-4 h-4 sm:w-5 sm:h-5 text-gray-200" />
+              )}
+            </button>
+
+            {/* Logo - Left on Mobile, Centered on Desktop */}
+            <div className="flex items-center lg:absolute lg:left-1/2 lg:-translate-x-1/2">
+              <img 
+                src={logo} 
+                alt="Xhara Logo" 
+                className="h-3 sm:h-4 md:h-5 lg:h-6 w-auto object-contain"
+              />
+            </div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
+              {menuItems.map((item, index) => (
+                <div 
+                  key={index} 
+                  className="relative group"
+                  onMouseEnter={() => {
+                    if (item.name === 'Women') setIsWomenHovered(true);
+                    if (item.name === 'Men') setIsMenHovered(true);
+                  }}
+                  onMouseLeave={() => {
+                    if (item.name === 'Women' && !isWomenClicked) setIsWomenHovered(false);
+                    if (item.name === 'Men' && !isMenClicked) setIsMenHovered(false);
                   }}
                 >
-                  {item.name}
-                  {item.submenu && <FiChevronDown className="w-3 h-3" />}
-                </button>
-                {item.submenu && item.name !== 'Women' && item.name !== 'Men' && (
-                  <div className="absolute top-full left-0 mt-0 bg-black border-t border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 w-48">
-                    <ul className="py-2">
-                      {item.submenu.map((subItem, subIndex) => (
-                        <li key={subIndex}>
-                          <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-900 hover:text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                            {subItem}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
-          
-          {/* Logo - Centered */}
-          <div className="flex items-center absolute left-1/2 -translate-x-1/2">
-            <h1 className="text-xl sm:text-2xl md:text-3xl text-gray-200 tracking-wider" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400 }}>
-              Xhara
-            </h1>
+                  <button 
+                    className="text-gray-200 hover:text-white font-medium py-2 flex items-center gap-1 text-xs xl:text-sm"
+                    style={{ fontFamily: "'Poppins', sans-serif" }}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (item.name === 'Women') {
+                        setIsWomenClicked(!isWomenClicked);
+                        setIsWomenHovered(!isWomenClicked);
+                      }
+                      if (item.name === 'Men') {
+                        setIsMenClicked(!isMenClicked);
+                        setIsMenHovered(!isMenClicked);
+                      }
+                    }}
+                  >
+                    {item.name}
+                    {item.submenu && <FiChevronDown className="w-3 h-3" />}
+                  </button>
+                  {item.submenu && item.name !== 'Women' && item.name !== 'Men' && (
+                    <div className="absolute top-full left-0 mt-0 bg-black border-t border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 w-48">
+                      <ul className="py-2">
+                        {item.submenu.map((subItem, subIndex) => (
+                          <li key={subIndex}>
+                            <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-900 hover:text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                              {subItem}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
           </div>
 
-          {/* Right Icons */}
+          {/* Right Icons - Search, Shopping Cart, Login */}
           <div className="flex items-center gap-2 sm:gap-4 lg:gap-6">
             <button className="p-1.5 sm:p-2 hover:bg-gray-900 rounded-full transition-colors">
               <FiSearch className="w-4 h-4 sm:w-5 sm:h-5 text-gray-200" />
@@ -137,18 +155,8 @@ const Header = () => {
               <FiShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 text-gray-200" />
               <span className="absolute top-0 right-0 bg-red-500 text-white text-[10px] sm:text-xs rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center">0</span>
             </button>
-            <button className="hidden sm:block p-1.5 sm:p-2 hover:bg-gray-900 rounded-full transition-colors">
+            <button className="p-1.5 sm:p-2 hover:bg-gray-900 rounded-full transition-colors">
               <FiUser className="w-4 h-4 sm:w-5 sm:h-5 text-gray-200" />
-            </button>
-            <button 
-              className="lg:hidden p-1.5 sm:p-2 hover:bg-gray-900 rounded-full transition-colors"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? (
-                <FiX className="w-4 h-4 sm:w-5 sm:h-5 text-gray-200" />
-              ) : (
-                <FiMenu className="w-4 h-4 sm:w-5 sm:h-5 text-gray-200" />
-              )}
             </button>
           </div>
         </div>
