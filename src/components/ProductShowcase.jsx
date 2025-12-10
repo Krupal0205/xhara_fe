@@ -114,8 +114,8 @@ const ProductShowcase = () => {
       
       {/* Product Info */}
       <div className="p-3 sm:p-4 bg-black">
-        <h3 className="font-semibold text-white mb-2 text-xs sm:text-sm md:text-base line-clamp-2">{product.name}</h3>
-        <p className="text-sm sm:text-base md:text-lg font-bold text-white">Rs. {product.price.toLocaleString()}</p>
+        <h3 className="font-semibold text-white mb-2 text-xs sm:text-sm md:text-base line-clamp-2" style={{ fontFamily: "'Poppins', sans-serif" }}>{product.name}</h3>
+        <p className="text-sm sm:text-base md:text-lg font-bold text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>Rs. {product.price.toLocaleString()}</p>
       </div>
     </div>
   );
@@ -165,14 +165,14 @@ const ProductShowcase = () => {
       
       {/* Product Info */}
       <div className="p-3 sm:p-4 bg-black">
-        <h3 className="font-semibold text-white mb-2 sm:mb-3 text-xs sm:text-sm md:text-base line-clamp-2">{product.name}</h3>
+        <h3 className="font-semibold text-white mb-2 sm:mb-3 text-xs sm:text-sm md:text-base line-clamp-2" style={{ fontFamily: "'Poppins', sans-serif" }}>{product.name}</h3>
         {showSale && product.onSale ? (
           <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            <span className="text-base sm:text-lg font-bold text-white">Rs. {product.salePrice.toLocaleString()}</span>
-            <span className="text-xs sm:text-sm text-gray-400 line-through">Rs. {product.originalPrice.toLocaleString()}</span>
+            <span className="text-base sm:text-lg font-bold text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>Rs. {product.salePrice.toLocaleString()}</span>
+            <span className="text-xs sm:text-sm text-gray-400 line-through" style={{ fontFamily: "'Poppins', sans-serif" }}>Rs. {product.originalPrice.toLocaleString()}</span>
           </div>
         ) : (
-          <p className="text-base sm:text-lg font-bold text-white">Rs. {product.price?.toLocaleString()}</p>
+          <p className="text-base sm:text-lg font-bold text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>Rs. {product.price?.toLocaleString()}</p>
         )}
       </div>
     </div>
@@ -193,8 +193,8 @@ const ProductShowcase = () => {
       {/* Featured Section */}
       <section className="container mx-auto px-3 sm:px-4 md:px-6 pt-8 sm:pt-12 md:pt-20">
         <div className="mb-6 sm:mb-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 text-center sm:text-left">Glow with Grace</h2>
-          <p className="text-gray-300 text-sm sm:text-base text-center sm:text-left">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 text-center sm:text-left" style={{ fontFamily: "'Poppins', sans-serif" }}>Glow with Grace</h2>
+          <p className="text-gray-300 font-medium text-sm sm:text-base text-center sm:text-left" style={{ fontFamily: "'Poppins', sans-serif" }}>
             Premium 925 silver designs made to dazzle this festive season — elegant, timeless, and gift-ready.
           </p>
         </div>
@@ -207,7 +207,7 @@ const ProductShowcase = () => {
             ))}
             {/* View All Card */}
             <div className="bg-[#1a1a1a] rounded-lg min-w-[280px] sm:min-w-[320px] md:min-w-[350px] lg:min-w-[400px] flex-shrink-0 h-[400px] sm:h-[450px] md:h-[500px] flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors">
-              <p className="text-white text-lg sm:text-xl font-medium">View all</p>
+              <p className="text-white text-lg sm:text-xl font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>View all</p>
             </div>
           </div>
         </div>
@@ -242,6 +242,7 @@ const ProductShowcase = () => {
                     ? 'bg-black text-white border border-gray-700'
                     : 'bg-[#36454f] text-white hover:bg-gray-700'
                 }`}
+                style={{ fontFamily: "'Poppins', sans-serif" }}
               >
                 {category.name}
               </button>
@@ -257,7 +258,7 @@ const ProductShowcase = () => {
               {/* View All Card */}
               <div className="bg-[#1B1B1B] rounded-lg min-w-[200px] sm:min-w-[240px] md:min-w-[280px] lg:min-w-[320px] flex-shrink-0 h-[350px] sm:h-[380px] md:h-[420px] lg:h-[350px] flex flex-col items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300">
                 <FiArrowRight className="text-white w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 mb-2 sm:mb-3" />
-                <p className="text-white text-sm sm:text-base md:text-lg font-medium">View all</p>
+                <p className="text-white text-sm sm:text-base md:text-lg font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>View all</p>
               </div>
             </div>
           </div>

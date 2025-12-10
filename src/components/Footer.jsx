@@ -31,13 +31,13 @@ export default function Footer() {
                 onClick={toggleQuickLinks}
                 className="flex items-center gap-2 mb-4 sm:mb-6 cursor-pointer hover:opacity-80 transition-opacity"
               >
-                <h4 className="text-base sm:text-lg font-semibold text-white">Quick links</h4>
+                <h4 className="text-base sm:text-lg font-semibold text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>Quick links</h4>
                 <FaChevronDown className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
               </button>
               {isQuickLinksOpen && (
                 <div className="space-y-2 sm:space-y-3">
                   <div className="flex flex-wrap gap-x-4 sm:gap-x-6 gap-y-2">
-                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">FAQ's</a>
+                    <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>FAQ's</a>
                     <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Contact us</a>
                     <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Jewellery Care tips</a>
                     <a href="#" className="text-xs sm:text-sm text-white hover:text-gray-300 transition-colors">Shipping</a>
@@ -57,7 +57,7 @@ export default function Footer() {
             {/* Right Side - Newsletter and Social Media */}
             <div>
               <div className="mb-4 sm:mb-6">
-                <h4 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6">
+                <h4 className="text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   Never miss out the new drops, subscribe now!
                 </h4>
                 <form onSubmit={handleSubmit} className="mb-3">
@@ -68,6 +68,7 @@ export default function Footer() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="flex-1 px-3 sm:px-4 py-2 sm:py-3 bg-transparent text-xs sm:text-sm text-white placeholder-white focus:outline-none"
+                      style={{ fontFamily: "'Poppins', sans-serif" }}
                     />
                     <button
                       type="submit"
@@ -82,7 +83,7 @@ export default function Footer() {
                     <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-green-500 flex items-center justify-center">
                       <FaCheck className="w-2 h-2 sm:w-3 sm:h-3 text-white" />
                     </div>
-                    <span>Thanks for subscribing</span>
+                    <span style={{ fontFamily: "'Poppins', sans-serif" }}>Thanks for subscribing</span>
                   </div>
                 )}
               </div>
@@ -109,9 +110,9 @@ export default function Footer() {
 
         {/* Copyright and Policy Links */}
         <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-x-2 sm:gap-x-3 gap-y-1 text-xs sm:text-sm text-white">
-          <span>© 2025, Silverlab</span>
+          <span style={{ fontFamily: "'Poppins', sans-serif" }}>© 2025, Silverlab</span>
           <span className="hidden sm:inline text-gray-500">•</span>
-          <a href="#" className="hover:text-gray-300 transition-colors">Refund policy</a>
+          <a href="#" className="hover:text-gray-300 transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>Refund policy</a>
           <span className="text-gray-500">•</span>
           <a href="#" className="hover:text-gray-300 transition-colors">Privacy policy</a>
           <span className="text-gray-500">•</span>

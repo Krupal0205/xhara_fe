@@ -1,10 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FiSearch, FiShoppingCart, FiUser, FiMenu, FiX, FiChevronDown } from 'react-icons/fi';
 import { FaFacebook, FaPinterest, FaInstagram, FaYoutube } from 'react-icons/fa';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isWomenHovered, setIsWomenHovered] = useState(false);
+  const [isMenHovered, setIsMenHovered] = useState(false);
+  const [isWomenClicked, setIsWomenClicked] = useState(false);
+  const [isMenClicked, setIsMenClicked] = useState(false);
+  const womenDropdownRef = useRef(null);
+  const menDropdownRef = useRef(null);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (womenDropdownRef.current && !womenDropdownRef.current.contains(event.target)) {
+        const womenButton = event.target.closest('button');
+        if (!womenButton || !womenButton.textContent?.includes('Women')) {
+          setIsWomenClicked(false);
+          setIsWomenHovered(false);
+        }
+      }
+      if (menDropdownRef.current && !menDropdownRef.current.contains(event.target)) {
+        const menButton = event.target.closest('button');
+        if (!menButton || !menButton.textContent?.includes('Men')) {
+          setIsMenClicked(false);
+          setIsMenHovered(false);
+        }
+      }
+    };
+
+    if (isWomenClicked || isMenClicked) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isWomenClicked, isMenClicked]);
 
   const menuItems = [
     {
@@ -30,24 +64,49 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-black sticky top-0 z-50">
+    <header className="bg-black sticky top-0 z-50 ">
       {/* Main Header */}
       <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
         <div className="flex items-center justify-between relative">
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
             {menuItems.map((item, index) => (
-              <div key={index} className="relative group">
-                <button className="text-gray-200 hover:text-white font-medium py-2 flex items-center gap-1 text-xs xl:text-sm">
+              <div 
+                key={index} 
+                className="relative group"
+                onMouseEnter={() => {
+                  if (item.name === 'Women') setIsWomenHovered(true);
+                  if (item.name === 'Men') setIsMenHovered(true);
+                }}
+                onMouseLeave={() => {
+                  if (item.name === 'Women' && !isWomenClicked) setIsWomenHovered(false);
+                  if (item.name === 'Men' && !isMenClicked) setIsMenHovered(false);
+                }}
+              >
+                <button 
+                  className="text-gray-200 hover:text-white font-medium py-2 flex items-center gap-1 text-xs xl:text-sm"
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (item.name === 'Women') {
+                      setIsWomenClicked(!isWomenClicked);
+                      setIsWomenHovered(!isWomenClicked);
+                    }
+                    if (item.name === 'Men') {
+                      setIsMenClicked(!isMenClicked);
+                      setIsMenHovered(!isMenClicked);
+                    }
+                  }}
+                >
                   {item.name}
                   {item.submenu && <FiChevronDown className="w-3 h-3" />}
                 </button>
-                {item.submenu && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-black border border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                {item.submenu && item.name !== 'Women' && item.name !== 'Men' && (
+                  <div className="absolute top-full left-0 mt-0 bg-black border-t border-gray-700 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 w-48">
                     <ul className="py-2">
                       {item.submenu.map((subItem, subIndex) => (
                         <li key={subIndex}>
-                          <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-900 hover:text-white">
+                          <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-900 hover:text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
                             {subItem}
                           </a>
                         </li>
@@ -58,6 +117,7 @@ const Header = () => {
               </div>
             ))}
           </nav>
+          
           {/* Logo - Centered */}
           <div className="flex items-center absolute left-1/2 -translate-x-1/2">
             <h1 className="text-xl sm:text-2xl md:text-3xl text-gray-200 tracking-wider" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 400 }}>
@@ -93,6 +153,80 @@ const Header = () => {
           </div>
         </div>
       </div>
+      
+      {/* Women Dropdown - Full Width */}
+      {(isWomenHovered || isWomenClicked) && (
+        <div 
+          ref={womenDropdownRef}
+          className="hidden lg:block absolute top-full left-0 w-full bg-black transition-all duration-200 z-50 h-[600px]"
+          onMouseEnter={() => setIsWomenHovered(true)}
+          onMouseLeave={() => {
+            if (!isWomenClicked) setIsWomenHovered(false);
+          }}
+        >
+          <div className="container mx-auto px-3 sm:px-4 md:px-6">
+            <div className="flex">
+              {/* Left Side - Menu Items */}
+              <div className="w-1/2 py-6 px-6 mt-[50px] ml-[100px]">
+                <ul className="space-y-3">
+                  {menuItems.find(item => item.name === 'Women')?.submenu.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <a href="#" className="block text-sm text-gray-200 hover:text-white transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                        {subItem}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* Right Side - Product Image */}
+              <div className="w-1/2 bg-black relative overflow-hidden min-h-[300px] mt-[50px]">
+                <img 
+                  src="https://i.pinimg.com/1200x/f5/4e/f0/f54ef0c0dc660f63a786a994a09bb6c8.jpg" 
+                  alt="Silver Ring" 
+                  className="w-[400px] h-[400px] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Men Dropdown - Full Width */}
+      {(isMenHovered || isMenClicked) && (
+        <div 
+          ref={menDropdownRef}
+          className="hidden lg:block absolute top-full left-0 w-full bg-black transition-all duration-200 z-50 h-[600px]"
+          onMouseEnter={() => setIsMenHovered(true)}
+          onMouseLeave={() => {
+            if (!isMenClicked) setIsMenHovered(false);
+          }}
+        >
+          <div className="container mx-auto px-3 sm:px-4 md:px-6">
+            <div className="flex">
+              {/* Left Side - Menu Items */}
+              <div className="w-1/2 py-6 px-6 mt-[50px] ml-[100px]">
+                <ul className="space-y-3">
+                  {menuItems.find(item => item.name === 'Men')?.submenu.map((subItem, subIndex) => (
+                    <li key={subIndex}>
+                      <a href="#" className="block text-sm text-gray-200 hover:text-white transition-colors" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                        {subItem}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* Right Side - Product Image */}
+              <div className="w-1/2 bg-black relative overflow-hidden min-h-[300px] mt-[50px]">
+                <img 
+                  src="https://i.pinimg.com/1200x/9a/57/56/9a57567cb4fca4ba94c92ed7b4b2a88a.jpg" 
+                  alt="Men's Chain" 
+                  className="w-[400px] h-[400px] object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Menu */}
       {isMenuOpen && (
