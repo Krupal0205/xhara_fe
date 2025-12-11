@@ -6,7 +6,7 @@ const Gifting = () => {
   const [priceFilter, setPriceFilter] = useState('');
   const [sortBy, setSortBy] = useState('best-selling');
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 8;
+  const productsPerPage = 12;
 
   // Scroll to top on component mount and page change
   useEffect(() => {
@@ -179,12 +179,12 @@ const Gifting = () => {
         </h1>
 
         {/* Description */}
-        <p className="text-white text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12 leading-relaxed max-w-4xl" style={{ fontFamily: "'Poppins', sans-serif" }}>
+        <p className="text-white text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12 leading-relaxed" style={{ fontFamily: "'Poppins', sans-serif" }}>
           Celebrate every moment with thoughtful gifts from our silver jewelry gifting collection. Make this Diwali unforgettable with SilverLab's exclusive 925 sterling silver gifting collection. From elegant rings and pendants to thoughtful jewelry sets, each piece is crafted to express love, purity, and timeless elegance. Whether for family, friends, or someone special—gift them the sparkle of real 925 silver this festive season.
         </p>
 
         {/* Filter and Sort Bar */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-10 pb-4 sm:pb-6 border-b border-gray-700">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-10 pb-4 sm:pb-6">
           {/* Left Side - Filters */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <span className="text-white text-sm sm:text-base font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>Filter:</span>
@@ -289,8 +289,16 @@ const Gifting = () => {
         </div>
 
         {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 sm:gap-3 mt-8 sm:mt-10 md:mt-12">
+        {totalPages > 0 && (
+          <div className="flex flex-col items-center gap-4 sm:gap-6 mt-8 sm:mt-10 md:mt-12">
+            {/* Showing results text */}
+            <div className="text-gray-400 text-sm sm:text-base" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              Showing {startIndex + 1}-{Math.min(endIndex, filteredAndSortedProducts.length)} of {filteredAndSortedProducts.length} products
+            </div>
+            
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 sm:gap-3">
             {/* Previous Button */}
             <button
               onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
@@ -336,6 +344,8 @@ const Gifting = () => {
             >
               <FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
+            </div>
+            )}
           </div>
         )}
       </div>

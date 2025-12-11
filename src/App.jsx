@@ -12,6 +12,7 @@ import BlogSection from './components/BlogSection';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
 import Gifting from './components/Gifting';
+import AdminPanel from './components/AdminPanel';
 
 function HomePage() {
   return (
@@ -32,18 +33,20 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const isContactPage = location.pathname === '/contact';
+  const isAdminPage = location.pathname === '/admin';
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <Header onContactClick={() => navigate('/contact')} />
+      {!isAdminPage && <Header onContactClick={() => navigate('/contact')} />}
       <main className="flex-1">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/contact" element={<Contact onBack={() => navigate('/')} />} />
           <Route path="/gifting" element={<Gifting />} />
+          <Route path="/admin" element={<AdminPanel />} />
         </Routes>
       </main>
-      <Footer />
+      {!isAdminPage && <Footer />}
     </div>
   );
 }
