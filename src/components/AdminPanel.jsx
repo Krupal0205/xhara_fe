@@ -4,10 +4,6 @@ import Sidebar from './admin/Sidebar';
 import Topbar from './admin/Topbar';
 import Dashboard from './admin/Dashboard';
 import Users from './admin/Users';
-import Content from './admin/Content';
-import Orders from './admin/Orders';
-import Settings from './admin/Settings';
-import Notifications from './admin/Notifications';
 
 const AdminPanel = () => {
   const navigate = useNavigate();
@@ -55,21 +51,13 @@ const AdminPanel = () => {
         return <Dashboard />;
       case 'users':
         return <Users />;
-      case 'content':
-        return <Content />;
-      case 'orders':
-        return <Orders />;
-      case 'notifications':
-        return <Notifications />;
-      case 'settings':
-        return <Settings />;
       default:
         return <Dashboard />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-black flex">
       {/* Sidebar */}
       <Sidebar
         isCollapsed={sidebarCollapsed}
@@ -85,7 +73,7 @@ const AdminPanel = () => {
         <Topbar onMenuToggle={toggleSidebar} />
 
         {/* Content */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto bg-black">
           <div className="max-w-7xl mx-auto">
             {renderContent()}
           </div>

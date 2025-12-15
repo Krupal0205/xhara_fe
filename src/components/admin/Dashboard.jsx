@@ -59,7 +59,7 @@ const Dashboard = () => {
         {kpis.map((kpi, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200"
+            className="bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-700 hover:shadow-md transition-shadow duration-200"
           >
             <div className="flex items-start justify-between mb-4">
               <div className={`p-3 rounded-lg bg-gradient-to-br ${kpi.color}`}>
@@ -76,10 +76,10 @@ const Dashboard = () => {
                 <span>{kpi.change}</span>
               </div>
             </div>
-            <h3 className="text-gray-500 text-sm font-medium mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <h3 className="text-gray-400 text-sm font-medium mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
               {kpi.title}
             </h3>
-            <p className="text-2xl font-bold text-gray-900" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <p className="text-2xl font-bold text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
               {kpi.value}
             </p>
             {/* Sparkline placeholder */}
@@ -98,12 +98,12 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Traffic Chart */}
-        <div className="lg:col-span-2 bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="lg:col-span-2 bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-700">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <h2 className="text-xl font-bold text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
               Traffic Overview
             </h2>
-            <select className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" style={{ fontFamily: "'Poppins', sans-serif" }}>
+            <select className="px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent" style={{ fontFamily: "'Poppins', sans-serif" }}>
               <option>Last 7 days</option>
               <option>Last 30 days</option>
               <option>Last 90 days</option>
@@ -120,15 +120,15 @@ const Dashboard = () => {
               />
             ))}
           </div>
-          <div className="mt-4 flex items-center justify-between text-sm text-gray-500">
+          <div className="mt-4 flex items-center justify-between text-sm text-gray-400">
             <span style={{ fontFamily: "'Poppins', sans-serif" }}>Page views</span>
             <span style={{ fontFamily: "'Poppins', sans-serif" }}>Unique visitors</span>
           </div>
         </div>
 
         {/* Quick Actions */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <h2 className="text-xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
+        <div className="bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-700">
+          <h2 className="text-xl font-bold text-white mb-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
             Quick Actions
           </h2>
           <div className="space-y-3">
@@ -147,28 +147,28 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Activity */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-        <h2 className="text-xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
+      <div className="bg-gray-900 rounded-xl p-6 shadow-sm border border-gray-700">
+        <h2 className="text-xl font-bold text-white mb-6" style={{ fontFamily: "'Poppins', sans-serif" }}>
           Recent Activity
         </h2>
         <div className="space-y-4">
           {recentActivity.map((activity) => (
             <div
               key={activity.id}
-              className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-50 transition-colors"
+              className="flex items-start gap-4 p-4 rounded-lg hover:bg-gray-800 transition-colors"
             >
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
                 {activity.avatar}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-gray-900 font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                <p className="text-white font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   <span className="font-semibold">{activity.user}</span>{' '}
                   {activity.action}
                   {activity.item && (
-                    <span className="text-gray-600"> - {activity.item}</span>
+                    <span className="text-gray-400"> - {activity.item}</span>
                   )}
                 </p>
-                <p className="text-sm text-gray-500 mt-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                <p className="text-sm text-gray-400 mt-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
                   {activity.time}
                 </p>
               </div>

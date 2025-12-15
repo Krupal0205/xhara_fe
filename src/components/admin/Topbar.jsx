@@ -29,12 +29,12 @@ const Topbar = ({ onMenuToggle, unreadNotifications = 3 }) => {
   ];
 
   return (
-    <header className="sticky top-0 z-30 bg-white border-b border-gray-200 px-4 sm:px-6 py-4">
+    <header className="sticky top-0 z-30 bg-gray-900 border-b border-gray-700 px-4 sm:px-6 py-4">
       <div className="flex items-center justify-between gap-4">
         {/* Left: Menu Toggle (Mobile) */}
         <button
           onClick={onMenuToggle}
-          className="lg:hidden p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
+          className="lg:hidden p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -43,13 +43,13 @@ const Topbar = ({ onMenuToggle, unreadNotifications = 3 }) => {
 
         {/* Search */}
         <div className="flex-1 max-w-md relative">
-          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
           <input
             type="text"
             placeholder="Search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-2 bg-gray-800 border border-gray-700 text-white placeholder-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           />
         </div>
@@ -60,7 +60,7 @@ const Topbar = ({ onMenuToggle, unreadNotifications = 3 }) => {
           <div className="relative" ref={notificationsRef}>
             <button
               onClick={() => setShowNotifications(!showNotifications)}
-              className="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="relative p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
               <FiBell className="w-5 h-5" />
               {unreadNotifications > 0 && (
@@ -72,14 +72,14 @@ const Topbar = ({ onMenuToggle, unreadNotifications = 3 }) => {
 
             {/* Notifications Dropdown */}
             {showNotifications && (
-              <div className="absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden z-50">
-                <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-                  <h3 className="font-bold text-gray-900" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              <div className="absolute right-0 mt-2 w-80 bg-gray-900 rounded-xl shadow-lg border border-gray-700 overflow-hidden z-50">
+                <div className="p-4 border-b border-gray-700 flex items-center justify-between">
+                  <h3 className="font-bold text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
                     Notifications
                   </h3>
                   <button
                     onClick={() => setShowNotifications(false)}
-                    className="p-1 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
+                    className="p-1 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800"
                   >
                     <FiX className="w-4 h-4" />
                   </button>
@@ -88,23 +88,23 @@ const Topbar = ({ onMenuToggle, unreadNotifications = 3 }) => {
                   {mockNotifications.map((notification) => (
                     <div
                       key={notification.id}
-                      className="p-4 border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer"
+                      className="p-4 border-b border-gray-800 hover:bg-gray-800 transition-colors cursor-pointer"
                     >
-                      <p className="font-medium text-gray-900 text-sm mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                      <p className="font-medium text-white text-sm mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
                         {notification.title}
                       </p>
-                      <p className="text-gray-600 text-xs mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                      <p className="text-gray-400 text-xs mb-1" style={{ fontFamily: "'Poppins', sans-serif" }}>
                         {notification.message}
                       </p>
-                      <p className="text-gray-400 text-xs" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                      <p className="text-gray-500 text-xs" style={{ fontFamily: "'Poppins', sans-serif" }}>
                         {notification.time}
                       </p>
                     </div>
                   ))}
                 </div>
-                <div className="p-3 border-t border-gray-200 text-center">
+                <div className="p-3 border-t border-gray-700 text-center">
                   <button
-                    className="text-sm text-cyan-600 hover:text-cyan-700 font-medium"
+                    className="text-sm text-cyan-400 hover:text-cyan-300 font-medium"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
                     View All Notifications
@@ -118,46 +118,46 @@ const Topbar = ({ onMenuToggle, unreadNotifications = 3 }) => {
           <div className="relative" ref={userMenuRef}>
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center gap-2 p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="flex items-center gap-2 p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-teal-500 flex items-center justify-center text-white font-semibold text-sm">
                 AD
               </div>
-              <span className="hidden sm:block font-medium text-gray-900" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              <span className="hidden sm:block font-medium text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
                 Admin
               </span>
-              <FiChevronDown className="hidden sm:block w-4 h-4 text-gray-500" />
+              <FiChevronDown className="hidden sm:block w-4 h-4 text-gray-400" />
             </button>
 
             {/* User Dropdown */}
             {showUserMenu && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden z-50">
-                <div className="p-4 border-b border-gray-200">
-                  <p className="font-semibold text-gray-900" style={{ fontFamily: "'Poppins', sans-serif" }}>
+              <div className="absolute right-0 mt-2 w-48 bg-gray-900 rounded-xl shadow-lg border border-gray-700 overflow-hidden z-50">
+                <div className="p-4 border-b border-gray-700">
+                  <p className="font-semibold text-white" style={{ fontFamily: "'Poppins', sans-serif" }}>
                     Admin User
                   </p>
-                  <p className="text-sm text-gray-500" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                  <p className="text-sm text-gray-400" style={{ fontFamily: "'Poppins', sans-serif" }}>
                     admin@xhara.com
                   </p>
                 </div>
                 <div className="py-2">
                   <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 transition-colors"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
                     Profile
                   </a>
                   <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                    className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 transition-colors"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
                     Settings
                   </a>
                   <a
                     href="#"
-                    className="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                    className="block px-4 py-2 text-sm text-red-400 hover:bg-red-900 hover:bg-opacity-30 transition-colors"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
                     Logout

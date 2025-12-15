@@ -6,10 +6,7 @@ const Sidebar = ({ isCollapsed, onToggle, activeTab, onTabChange, onLogout }) =>
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: FiTrendingUp },
     { id: 'users', label: 'Users', icon: FiUsers },
-    { id: 'content', label: 'Content', icon: FiFileText },
-    { id: 'orders', label: 'Orders', icon: FiShoppingBag },
-    { id: 'notifications', label: 'Notifications', icon: FiBell },
-    { id: 'settings', label: 'Settings', icon: FiSettings },
+    
   ];
 
   return (
@@ -24,25 +21,16 @@ const Sidebar = ({ isCollapsed, onToggle, activeTab, onTabChange, onLogout }) =>
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-50 bg-white border-r border-gray-200 flex flex-col transition-all duration-250 ease-in-out ${
-          isCollapsed 
-            ? '-translate-x-full lg:translate-x-0 lg:w-20' 
+        className={`fixed lg:static inset-y-0 left-0 z-50 bg-gray-900 border-r border-gray-700 flex flex-col transition-all duration-250 ease-in-out ${isCollapsed
+            ? '-translate-x-full lg:translate-x-0 lg:w-20'
             : 'w-64'
-        }`}
+          }`}
       >
         {/* Header */}
-        <div className="p-6 border-b border-gray-200 flex items-center justify-between">
+        <div className="p-6 border-b border-gray-700 flex items-center justify-between">
           {!isCollapsed && (
             <div className="flex items-center gap-3 flex-1">
               <img src={logo} alt="Xhara" className="h-6 w-auto" />
-              <div>
-                <h1 className="text-lg font-bold text-gray-900" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                  Xhara
-                </h1>
-                <p className="text-xs text-gray-500" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                  Admin Panel
-                </p>
-              </div>
             </div>
           )}
           {isCollapsed && (
@@ -53,14 +41,14 @@ const Sidebar = ({ isCollapsed, onToggle, activeTab, onTabChange, onLogout }) =>
           <div className="flex items-center gap-2">
             <button
               onClick={onToggle}
-              className="hidden lg:flex p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="hidden lg:flex p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
               title={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             >
               {isCollapsed ? <FiChevronRight className="w-5 h-5" /> : <FiChevronLeft className="w-5 h-5" />}
             </button>
             <button
               onClick={onToggle}
-              className="lg:hidden p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="lg:hidden p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
               <FiX className="w-5 h-5" />
             </button>
@@ -79,11 +67,10 @@ const Sidebar = ({ isCollapsed, onToggle, activeTab, onTabChange, onLogout }) =>
                       onToggle();
                     }
                   }}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${
-                    activeTab === item.id
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 ${activeTab === item.id
                       ? 'bg-gradient-to-r from-cyan-500 to-teal-500 text-white shadow-md'
-                      : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
-                  }`}
+                      : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                    }`}
                   style={{ fontFamily: "'Poppins', sans-serif" }}
                   title={isCollapsed ? item.label : ''}
                 >
@@ -96,12 +83,11 @@ const Sidebar = ({ isCollapsed, onToggle, activeTab, onTabChange, onLogout }) =>
         </nav>
 
         {/* Logout */}
-        <div className="p-4 border-t border-gray-200">
+        <div className="p-4 border-t border-gray-700">
           <button
             onClick={onLogout}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-600 hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 ${
-              isCollapsed ? 'justify-center' : ''
-            }`}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-red-400 hover:bg-red-900 hover:bg-opacity-30 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 ${isCollapsed ? 'justify-center' : ''
+              }`}
             style={{ fontFamily: "'Poppins', sans-serif" }}
             title={isCollapsed ? 'Logout' : ''}
           >
